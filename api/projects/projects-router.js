@@ -43,14 +43,14 @@ router.put('/:id',async(req,res)=> {
         if(!valid){
             res.status(404).json({message:'project not found'})
         }
-        else if(!name || !description || !completed){
-            res.status(400).json({message:'Project details are incomplete'})
+        else if(!name || !description || completed === undefined){
+            res.status(400)
         }
         const updateProject = await Projects.update(id,{name,description,completed})
         res.json(updateProject)
     }
     catch(err){
-        res.status(500).json('this is not the correct endpoint')
+        res.json(err.message)
     }
     
 })
@@ -63,7 +63,6 @@ router.delete('/:id',async(req,res)=> {
         }
         else{
             await Projects.remove(id)
-            console.log(valid)
             res.json(valid)
         }
     }
