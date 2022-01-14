@@ -8,9 +8,8 @@ const projectsRouter = require('./projects/projects-router')
 server.use(express.json())
 server.use('/api/projects',projectsRouter)
 
-// server.get('/hello',(req,res) => {
-//     console.log('Helloo sheeba')
-//     res.json({message:'helloo'})
-// })
+server.use('*',(err,req,res,next) => {
+    res.json({message:`${err.message}`})
+})
 
 module.exports = server;
