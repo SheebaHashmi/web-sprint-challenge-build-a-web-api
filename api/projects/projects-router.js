@@ -70,8 +70,22 @@ router.delete('/:id',async(req,res)=> {
         res.json(err)
     }
 })
-// router.get('/:id/actions',(req,res)=> {
+router.get('/:id/actions',async(req,res)=> {
+    const { id } = req.params
 
-// })
+    try{
+        const valid = await Projects.get(id)
+        if(!valid){
+            res.status(404)
+        }
+        const actions = await Projects.getProjectActions(id)
+        res.json(actions)
+    }
+    catch(err){
+        res.json(err)
+    }
+    
+})
+
 
 module.exports = router
