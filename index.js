@@ -12,11 +12,8 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Pull your server into this file and start it!
 */
-const express = require('express')
-const server = express()
+const server = require('./api/server')
 require('dotenv').config()
-
-server.use(express.json())
 
 const port = process.env.PORT || 9000
 
