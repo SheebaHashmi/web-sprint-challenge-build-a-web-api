@@ -1,7 +1,7 @@
 // Write your "projects" router here!
 const express = require('express')
 const Projects = require('./projects-model')
-const { validateProject,validateProjectBody }= require('./projects-middleware')
+const { validateProject,validateProjectBody } = require('./projects-middleware')
 const router = express.Router()
 
 router.get('/',(req,res)=> {
@@ -22,7 +22,7 @@ router.post('/',validateProjectBody,async(req,res)=> {
         res.json(newProject)
    } 
    catch(err){
-       res.status(400).json({message:err.message})
+       res.json({message:err.message})
    }  
 })
 

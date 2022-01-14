@@ -9,20 +9,16 @@ async function validateProject(req,res,next){
         next()
     }   
     else{
-        // res.status(404).json({message:'no project found'})
         next({status:404,message:'no project found'})
     }
 }
 
 function validateProjectBody(req,res,next){
-    // if(!req.body){
-    //     next({status:400,message:'No new project to add'})
-    // }
-    // else{
-    //     next()
-    // }
     const {name,description,completed} = req.body
+    console.log(req.body);
+    console.log(name, description, completed);
     if(!name || !description || completed === undefined){
+        console.log("validating project body");
         next({status:400})
     }
     else{
