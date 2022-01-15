@@ -20,7 +20,6 @@ action.get('/:id',validateActions,(req,res) => {
 })
 
 action.post('/',validateActionBody, async(req,res) => {
-    // const {notes,description,completed,project_id} = req.body
     
     try{
         const newAction = await Actions.insert(req.body)
@@ -46,6 +45,7 @@ action.put('/:id',validateActions,validateActionBody, async(req,res) => {
 
 action.delete('/:id',validateActions,async(req,res) => {
     const {id} = req.params
+    
     try{
         await Actions.remove(id)
         res.json(req.action)

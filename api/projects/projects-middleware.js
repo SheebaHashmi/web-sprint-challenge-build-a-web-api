@@ -15,8 +15,7 @@ async function validateProject(req,res,next){
 
 function validateProjectBody(req,res,next){
     const {name,description,completed} = req.body
-    console.log(req.body);
-    console.log(name, description, completed);
+
     if(!name || !description || completed === undefined){
         console.log("validating project body");
         next({status:400})
